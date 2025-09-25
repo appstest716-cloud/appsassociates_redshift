@@ -1,3 +1,9 @@
-{{ config(materialized="incremental", unique_key="integration_id") }}
+{{
+    config(
+        materialized="table",
+        full_refresh=True,
+    )
+}}
 
-select * from {{ source("bicc", "sales")}}
+select *
+from {{ source('bicc','sales') }}

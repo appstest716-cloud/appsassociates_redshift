@@ -3,9 +3,9 @@ version: "1.0"
 config-version: 2
 
 models:
-  apps_blog:            # MUST match folder: models/apps_blog/
-    +database: staging  # Redshift database to write to
-    +schema: analytics  # default schema for this package
+  apps_blog:                # MUST match models/apps_blog/
+    +database: staging      # keep DB consistent
+    +schema: analytics
 
     raw:
       +schema: stage
