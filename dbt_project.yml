@@ -5,9 +5,7 @@ config-version: 2
 
 models:
   my_new_project:
-        # write to the 'staging' DB
-    +schema: testing          # default schema for this project
-
-    # Optional per-folder overrides
+    +database: test      # where models are written
+    +schema: testing
     raw:
       +schema: stage
