@@ -1,31 +1,20 @@
-name: apps_blog          
-version: '1.0'
+name: apps_blog
+version: "1.0"
 config-version: 2
 
 models:
-  apps_blog:
-    +project: "{{ env_var('DBT_BQ_SOURCE_PROJECT') }}"
-
-    # Correct the dataset for stage models
-    stage:
-      +dataset: post_stage
-      materialized: view
-
-      bicc:
-        materialized: table
+  apps_blog:            # MUST match folder: models/apps_blog/
+    +database: staging  # Redshift database to write to
+    +schema: analytics  # default schema for this package
 
     raw:
-      +dataset: stage
+      +schema: stage
       materialized: table
+
+    stage:
+      +schema: post_stage
+      materialized: view
 
     core:
-      +dataset: core
+      +schema: core
       materialized: table
-
-vars:
-  bq_dw_prod: 'phonic-spot-335716'
-  bq_dw_dev: 'pioneering-flag-293415'
-  bq_dw_raw: 'endless-station-293414'
-  default_timezone: 'America/New_York'
-  event_date: '{{ modules.datetime.datetime.now(tz=modules.pytz.timezone( var("default_timezone") )).date() - modules.datetime.timedelta(days=1) }}'
-  event_date_sql: 'format_date("%Y%m%d", date_sub(current_date("America/New_York"), interval 1 day))'
