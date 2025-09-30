@@ -8,4 +8,3 @@ models:
   my_new_project:
     +materialized: table
     consumption:  { +schema: consumption }
-    integration:  { +schema: integration }

@@ -4,4 +4,3 @@ sources:
     schema: stage
     tables:
       - name: customers_raw
-      - name: orders_raw
