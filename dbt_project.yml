@@ -8,5 +8,5 @@ models:
   my_new_project:
     +schema: testing     # default schema under the connected DB
     raw:
-      +schema: dummy__sri
+      +schema: consumption
       +materialized: table
