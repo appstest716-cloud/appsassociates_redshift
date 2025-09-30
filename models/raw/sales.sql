@@ -5,5 +5,6 @@
     )
 }}
 
-select *
-from {{ source('bicc','sales') }}
+
+select * from
+{{source('bicc', 'sales')}}
